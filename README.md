@@ -1,8 +1,16 @@
 # PyAiNetwork
 
-PyAiNetwork is an open-source Python library for creating and training neural networks with simple and beginner-friendly code.
+PyAiNetork - this is a lightweight library to create small to medium-sized LM's.
 
-Install:
+---
+
+## Main functions
+
+- Creating neural networks
+- neural network training
+- learning and counting through numpy tables
+
+## Installation
 
 ```bash
 pip install PyAiNetwork
@@ -10,221 +18,67 @@ pip install PyAiNetwork
 
 ---
 
-# About
-
-PyAiNetwork is designed to make neural network development simple.
-
-Instead of writing hundreds of lines of code for neurons, layers, weights, and training, you can create a neural network with just a few commands.
-
-The library is suitable for:
-
-- Learning how neural networks work
-- Creating simple AI projects
-- Experimenting with custom network architectures
-- Building your own AI systems
-
----
-
-# Developers
-
-**Eyes Studio**
-
-Eyes Studio is an independent software developer focused on AI tools and open-source projects.
-
----
-
-# Features
-
-- ✅ Simple neural network API
-- ✅ Multiple hidden layers
-- ✅ GELU activation
-- ✅ ReLU activation
-- ✅ Sigmoid activation
-- ✅ Built-in training
-- ✅ Lightweight implementation
-- ✅ Pure Python
-- ✅ Open Source
-
----
-
-# Installation
-
-Install from PyPI:
+## examples of use normal
 
 ```bash
-pip install PyAiNetwork
-```
-
-Import:
-
-```python
-from PyAiNetwork import Network
-```
-
----
-
-# Quick Start
-
-Create your first neural network.
-
-```python
 from PyAiNetwork import Network
 
 net = Network(
-    2,  # input neurons
-    2,  # hidden layers
-    4,  # neurons in every hidden layer
-    1   # output neurons
+    4, #input 
+    1, #layers
+    1, #neorons on layer
+    4 #output
+    'gelu' #activition function
 )
 
-result = net.forward([0.5, 1.0])
+input = [0.2,0.4,0.6,0.8]
 
-print(result)
-```
+output = net.forward(input)
+print(output)
 
----
-
-# Training
-
-Example:
-
-```python
-from PyAiNetwork import Network
-
-net = Network(2,1,4,1)
-
-for i in range(100):
+for i in range(1000):
     net.train(
-        [1,0],
-        [1]
+        input, #input
+        input, #output
+        0.01 #learing rate
     )
 
-print(net.forward([1,0]))
+output = net.forward(input)
+print(output)
 ```
+## examples of use profi
 
----
-
-# Activation Functions
-
-PyAiNetwork currently supports:
-
-```python
-activition="gelu"
-```
-
-```python
-activition="relu"
-```
-
-```python
-activition="sigmoid"
-```
-
-Example:
-
-```python
-net = Network(
-    2,
-    2,
-    8,
-    1,
-    activition="relu"
-)
-```
-
----
-
-# Network
-
-Simple neural network.
-
-Constructor:
-
-```python
-Network(
-    input_neorons,
-    layers,
-    neorons_on_layer,
-    output_neorons,
-    activition="gelu"
-)
-```
-
-Parameters:
-
-| Parameter | Description |
-|-----------|-------------|
-| input_neorons | Number of input neurons |
-| layers | Number of hidden layers |
-| neorons_on_layer | Neurons in every hidden layer |
-| output_neorons | Number of output neurons |
-| activition | Activation function |
-
----
-
-# ProfNetwork
-
-Advanced neural network.
-
-Unlike `Network`, every hidden layer can have a different number of neurons.
-
-Example:
-
-```python
+```bash
 from PyAiNetwork import ProfNetwork
 
+layers_neorons = [1]
+
 net = ProfNetwork(
-    2,
-    [8,16,8],
-    1
+    4, #input 
+    layers_neorons, #layers
+    4 #output
+    'gelu' #activition function
+    'matrix' # math type (or every)
 )
+
+input = [0.2,0.4,0.6,0.8]
+
+output = net.forward(input)
+print(output)
+
+for i in range(1000):
+    net.train(
+        input, #input
+        input, #output
+        0.01 #learing rate
+    )
+
+output = net.forward(input)
+print(output)
 ```
 
-Architecture:
+# GitHub
 
-```
-2 → 8 → 16 → 8 → 1
-```
-
-Constructor:
-
-```python
-ProfNetwork(
-    input_neorons,
-    layers_neorons,
-    output_neorons,
-    activition="gelu"
-)
-```
-
-Example:
-
-```python
-net = ProfNetwork(
-    3,
-    [32,64,64,32],
-    5
-)
-```
+https://github.com/eyes-studio/PyAiNetwork
 
 ---
-
-# Roadmap
-
-Future versions may include:
-
-- Adam optimizer
-- Model saving/loading
-- Batch training
-- More activation functions
-- Loss functions
-- Better performance
-- More neural network types
-
----
-
-# License
-
-MIT License
-
-Copyright (c) 2026 Eyes Studio
