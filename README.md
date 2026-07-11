@@ -56,8 +56,8 @@ layers_neorons = [1]
 net = ProfNetwork(
     4, #input 
     layers_neorons, #layers
-    4 #output
-    'gelu' #activition function
+    4, #output
+    'gelu', #activition function
     'matrix' # math type (or every)
 )
 
@@ -75,6 +75,22 @@ for i in range(1000):
 
 output = net.forward(input)
 print(output)
+
+net.save("save.json") #json file name
+
+net2 = ProfNetwork(
+    4, #input 
+    layers_neorons, #layers
+    4, #output
+    'gelu', #activition function
+    'matrix' # math type (or every)
+)
+
+net2.load("save.json") #json file name
+
+output = net2.forward(input)
+print(output)
+
 ```
 
 # GitHub
